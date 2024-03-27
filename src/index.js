@@ -1,3 +1,3 @@
-import App from "./components/App";
+import App from "./App";
 
-new App({ $target: document.querySelector(".app") });
+new App();
