@@ -13,9 +13,7 @@ export default function Product({
     </div>
   `;
 
-  this.render = () => {
-    $target.appendChild(this.$element);
-  };
+  this.render = () => $target.appendChild(this.$element);
 
   this.render();
 }

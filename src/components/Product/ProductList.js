@@ -1,9 +1,19 @@
 import "./product.css";
 import Product from "./Product";
 import getProducts from "../../utilities/fetch";
+import FilterMenu from "../FilterMenu/FilterMenu";
 
 export default function ProductList({ $target }) {
-  this.state = {};
+  this.state = { selected: "밥" };
+
+  const filterMenu = new FilterMenu({
+    $target,
+    selected: this.state.selected,
+    onClick: (tag) => {
+      this.setState("selected", tag);
+    },
+  });
+
   this.$element = document.createElement("ul");
   this.$element.classList.add("product_list");
   $target.appendChild(this.$element);
@@ -21,8 +31,11 @@ export default function ProductList({ $target }) {
   };
 
   this.render = () => {
-    this.state.products?.map(
-      (product) => new Product({ $target: this.$element, product })
+    this.$element.innerHTML = ``;
+    this.state.products?.filter(
+      (product) =>
+        product.tag === this.state.selected &&
+        new Product({ $target: this.$element, product })
     );
   };
 
