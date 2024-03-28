@@ -1,0 +1,32 @@
+.product_list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+
+.product_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4px;
+}
+
+.product_card > img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product_card > :nth-child(2) {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.product_order_btn {
+  background-color: var(--color-main2);
+  color: var(--color-gray-100);
+  padding: 6px 14px;
+  margin-top: 4px;
+  border-radius: 16px;
+}

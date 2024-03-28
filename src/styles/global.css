@@ -1,12 +1,17 @@
 :root {
-  --color-bg: #00224d;
-  --color-main1: #ff204e;
-  --color-main2: #a0153e;
-  --color-main3: #5d0e41;
+  --color-main1: #00224d;
+  --color-main2: #ff204e;
+  --color-main3: #a0153e;
+  --color-main4: #5d0e41;
+  --color-gray-100: #f3f4f6;
+  --color-gray-300: #d1d5db;
+  --color-gray-500: #6b7280;
+  --color-gray-700: #374151;
+  --color-gray-900: #111827;
 }
 
 html {
-  background-color: var(--color-bg);
+  background-color: #ffffff;
   font-family: sans-serif;
 }
 
@@ -25,5 +30,5 @@ button {
 
 p {
   line-height: 1.5;
-  color: white;
+  color: var(--color-gray-900);
 }
