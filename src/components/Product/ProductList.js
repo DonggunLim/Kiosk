@@ -14,7 +14,7 @@ export default function ProductList({ $target }) {
     },
   });
 
-  this.$element = document.createElement("ul");
+  this.$element = document.createElement("div");
   this.$element.classList.add("product_list");
   $target.appendChild(this.$element);
 

@@ -3,7 +3,7 @@ export default function Product({
   product: { name, price, img, tag },
 }) {
   this.$element = document.createElement("li");
-  this.$element.classList.add(["product_item", `${name}`]);
+  this.$element.classList.add("product_item", `${name}`);
   this.$element.innerHTML = `
     <div class="product_card">
       <img class="product_img" src='/public/images/${img}' />
