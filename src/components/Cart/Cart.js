@@ -1,7 +1,8 @@
+import { saveDataToStorage } from "../../utilities/storage";
 import CartItem from "./CartItem";
 import "./style.css";
 
-export default function Cart({ $target }) {
+export default function Cart({ $target, router }) {
   this.state = {
     orderList: [],
   };
@@ -62,4 +63,19 @@ export default function Cart({ $target }) {
     }, 0);
     this.$element.querySelector(".total_price").innerText = `${totalPrice}원`;
   };
+
+  const handleSubmit = () => {
+    if (this.state.orderList.length) {
+      saveDataToStorage(this.state.orderList);
+      router.navigate("/");
+    }
+  };
+
+  this.setEvent = () => {
+    this.$element
+      .querySelector(".order_btn")
+      .addEventListener("click", handleSubmit);
+  };
+
+  this.setEvent();
 }

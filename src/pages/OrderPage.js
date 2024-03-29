@@ -1,7 +1,7 @@
 import Cart from "../components/Cart/Cart";
 import ProductList from "../components/Product/ProductList";
 
-export default function OrderPage({ $target }) {
+export default function OrderPage({ $target, router }) {
   this.state = {};
 
   this.setState = (name, data) => {
@@ -21,5 +21,5 @@ export default function OrderPage({ $target }) {
     },
   });
 
-  const cart = new Cart({ $target });
+  const cart = new Cart({ $target, router });
 }
