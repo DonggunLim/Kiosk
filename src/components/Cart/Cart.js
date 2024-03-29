@@ -1,0 +1,65 @@
+import CartItem from "./CartItem";
+import "./style.css";
+
+export default function Cart({ $target }) {
+  this.state = {
+    orderList: [],
+  };
+
+  this.$element = document.createElement("div");
+  this.$element.classList.add("cart_container");
+  this.$element.innerHTML = `
+    <div class='order_list'>
+    </div>
+    <div class='btn_container'>
+        <p class="total_price">0원</p>
+        <button class="order_btn">주문하기</button>
+    </div>
+  `;
+
+  $target.appendChild(this.$element);
+
+  this.setState = (orders) => {
+    this.state.orderList = [...orders];
+    this.render();
+  };
+
+  this.render = () => {
+    const $target = document.querySelector(".order_list");
+    $target.innerHTML = ``;
+
+    this.state.orderList.map(
+      (order) =>
+        new CartItem({
+          $target,
+          order,
+          handleClickArrow: (order) => {
+            const newOrders = [...this.state.orderList];
+
+            const orderIndex = newOrders.findIndex(
+              (o) => o.name === order.name
+            );
+
+            if (orderIndex !== -1) {
+              newOrders[orderIndex] = order;
+            } else {
+              newOrders.push(order);
+            }
+
+            this.setState(newOrders);
+          },
+          handleDelete: (order) => {
+            const newOrders = this.state.orderList.filter(
+              (o) => o.name !== order.name
+            );
+            this.setState(newOrders);
+          },
+        })
+    );
+
+    const totalPrice = this.state.orderList.reduce((acc, order) => {
+      return acc + order.price * order.count;
+    }, 0);
+    this.$element.querySelector(".total_price").innerText = `${totalPrice}원`;
+  };
+}
