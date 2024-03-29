@@ -3,7 +3,7 @@ import Product from "./Product";
 import getProducts from "../../utilities/fetch";
 import FilterMenu from "../FilterMenu/FilterMenu";
 
-export default function ProductList({ $target }) {
+export default function ProductList({ $target, onClick }) {
   this.state = { selected: "밥" };
 
   const filterMenu = new FilterMenu({
@@ -35,7 +35,7 @@ export default function ProductList({ $target }) {
     this.state.products?.filter(
       (product) =>
         product.tag === this.state.selected &&
-        new Product({ $target: this.$element, product })
+        new Product({ $target: this.$element, product, onClick })
     );
   };
 
