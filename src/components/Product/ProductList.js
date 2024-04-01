@@ -1,6 +1,6 @@
 import "./product.css";
 import Product from "./Product";
-import getProducts from "../../utilities/fetch";
+import { getProducts } from "../../utilities/fetcher";
 import FilterMenu from "../FilterMenu/FilterMenu";
 
 export default function ProductList({ $target, onClick }) {
