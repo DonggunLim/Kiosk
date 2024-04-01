@@ -31,7 +31,7 @@ export default function CartItem({
     if (e.target && e.target.classList.contains("right")) {
       handleClickArrow({ ...order, count: order.count + 1 });
     } else if (e.target && e.target.classList.contains("left")) {
-      const newCount = order.count === 0 ? 0 : order.count - 1;
+      const newCount = order.count === 1 ? 1 : order.count - 1;
       handleClickArrow({ ...order, count: newCount });
     } else if (e.target && e.target.classList.contains("delete")) {
       handleDelete(order);
