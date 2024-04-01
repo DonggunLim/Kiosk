@@ -2,22 +2,19 @@ import "./style.css";
 
 const FILTER_ITEM = ["밥", "면", "기타"];
 
-export default function FilterMenu({
-  $target,
-  selected,
-  onClick: handleFilter,
-}) {
+export default function FilterMenu({ $target, onChangeMenu: handleFilter }) {
   this.$element = document.createElement("div");
   this.$element.classList.add("filter_container");
   this.$element.innerHTML = `
     <ul class='filter_list'>
-    ${FILTER_ITEM.map((filter) => {
+    ${FILTER_ITEM.map((filter, index) => {
       return `<li class="filter_item ${
-        filter === selected && "active"
+        index === 0 && "active"
       }" data-tag="${filter}">${filter}</li>`;
     }).join("")}
     </ul>
   `;
+
   $target.appendChild(this.$element);
 
   const handleClick = (e) => {

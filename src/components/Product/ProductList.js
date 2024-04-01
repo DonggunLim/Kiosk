@@ -1,18 +1,9 @@
 import "./product.css";
 import Product from "./Product";
 import { getProducts } from "../../utilities/fetcher";
-import FilterMenu from "../FilterMenu/FilterMenu";
 
 export default function ProductList({ $target, onClick }) {
   this.state = { selected: "밥" };
-
-  const filterMenu = new FilterMenu({
-    $target,
-    selected: this.state.selected,
-    onClick: (tag) => {
-      this.setState("selected", tag);
-    },
-  });
 
   this.$element = document.createElement("div");
   this.$element.classList.add("product_list");

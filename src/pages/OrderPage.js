@@ -1,12 +1,12 @@
 import Cart from "../components/Cart/Cart";
 import ProductList from "../components/Product/ProductList";
+import FilterMenu from "../components/FilterMenu/FilterMenu";
 
 export default function OrderPage({ $target, router }) {
-  this.state = {};
-
-  this.setState = (name, data) => {
-    this.state = { ...this.state, [name]: data };
-  };
+  const filterMenu = new FilterMenu({
+    $target,
+    onChangeMenu: (tag) => productList.setState("selected", tag),
+  });
 
   const productList = new ProductList({
     $target,
