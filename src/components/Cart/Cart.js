@@ -1,4 +1,5 @@
 import { saveDataToStorage } from "../../utilities/storage";
+import Modal from "../Modal/Modal";
 import CartItem from "./CartItem";
 import "./style.css";
 
@@ -19,6 +20,13 @@ export default function Cart({ $target, router }) {
   `;
 
   $target.appendChild(this.$element);
+
+  const handleSubmit = () => {
+    if (this.state.orderList.length) {
+      saveDataToStorage(this.state.orderList);
+      modal.open();
+    }
+  };
 
   this.setState = (orders) => {
     this.state.orderList = [...orders];
@@ -64,13 +72,6 @@ export default function Cart({ $target, router }) {
     this.$element.querySelector(".total_price").innerText = `${totalPrice}원`;
   };
 
-  const handleSubmit = () => {
-    if (this.state.orderList.length) {
-      saveDataToStorage(this.state.orderList);
-      router.navigate("/");
-    }
-  };
-
   this.setEvent = () => {
     this.$element
       .querySelector(".order_btn")
@@ -78,4 +79,10 @@ export default function Cart({ $target, router }) {
   };
 
   this.setEvent();
+
+  const modal = new Modal({
+    innerText: "주문이 완료되었습니다.",
+    router,
+    path: "/",
+  });
 }
