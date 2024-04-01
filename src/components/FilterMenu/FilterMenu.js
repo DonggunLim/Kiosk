@@ -26,9 +26,8 @@ export default function FilterMenu({
         $li.classList.remove("active");
       });
       e.target.classList.add("active");
+      handleFilter(e.target.dataset.tag);
     }
-
-    handleFilter(e.target.dataset.tag);
   };
 
   this.setEvent = () => this.$element.addEventListener("click", handleClick);
