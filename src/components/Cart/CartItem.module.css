@@ -1,0 +1,29 @@
+.order_item {
+  display: flex;
+  gap: 100px;
+}
+
+.order_item :nth-child(1) {
+  flex-grow: 1;
+}
+
+.count_container {
+  display: flex;
+  align-items: center;
+}
+
+.count_container > button {
+  font-size: 24px;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  background-color: var(--color-gray-100);
+  vertical-align: middle;
+}
+
+.delete {
+  width: 16px;
+  height: 16px;
+}

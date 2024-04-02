@@ -12,13 +12,13 @@
   padding: 0px 6px;
 }
 
-.filter_list > li {
+.filter_item {
   color: var(--color-gray-100);
   background-color: var(--color-main2);
   padding: 8px 16px;
   cursor: pointer;
 }
 
-.filter_list > li.active {
+.active {
   border-bottom: 3px solid var(--color-gray-100);
 }

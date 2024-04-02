@@ -1,12 +1,11 @@
-import "./product.css";
+import styles from "./ProductList.module.css";
 import Product from "./Product";
 import { getProducts } from "../../utilities/fetcher";
 
 export default function ProductList({ $target, onClick }) {
   this.state = { selected: "밥" };
-
   this.$element = document.createElement("div");
-  this.$element.classList.add("product_list");
+  this.$element.classList.add(styles.product_list);
   $target.appendChild(this.$element);
 
   this.init = () => {

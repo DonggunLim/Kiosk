@@ -1,12 +1,12 @@
-import "./style.css";
+import styles from "./Modal.module.css";
 
 export default function Modal({ innerText, router, path }) {
   const $app = document.querySelector(".app");
   this.$element = document.createElement("section");
-  this.$element.classList.add("modal_container");
+  this.$element.classList.add(styles.modal_container);
   this.$element.innerHTML = `
-    <div class="modal_outer">
-        <div class="modal_inner">
+    <div class=${styles.modal_outer}>
+        <div class=${styles.modal_inner}>
             ${innerText}
         </div>
     </div>
@@ -15,14 +15,14 @@ export default function Modal({ innerText, router, path }) {
   $app.appendChild(this.$element);
 
   this.$element.addEventListener("click", (e) => {
-    if (e.target && e.target.classList.contains("modal_outer")) {
+    if (e.target && e.target.classList.contains(styles.modal_outer)) {
       this.close();
     }
   });
 
-  this.open = () => this.$element.classList.add("open");
+  this.open = () => this.$element.classList.add(styles.open);
   this.close = () => {
-    this.$element.classList.remove("open");
+    this.$element.classList.remove(styles.open);
     router.navigate(path);
   };
 }

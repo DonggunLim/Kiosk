@@ -22,6 +22,6 @@
   border-radius: 8px;
 }
 
-.modal_container.open {
+.open {
   display: block;
 }
