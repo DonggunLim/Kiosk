@@ -1,0 +1,58 @@
+.thirdStep_component {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.card_icon_container {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-gray-700);
+  border-radius: 16px;
+  padding: 32px 16px;
+}
+
+.receipt_container {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-gray-700);
+  background-color: var(--color-gray-300);
+  border-radius: 16px;
+  padding: 32px 16px;
+}
+
+.receipt_container > h2 {
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.receipt_container > ul {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 16px 0;
+}
+
+.receipt_container > p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.card_icon {
+  width: 300px;
+  height: 300px;
+}
+
+.complite_btn {
+  background-color: var(--color-main1);
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+  padding: 8px 16px;
+  margin: 8px 0;
+  border-radius: 16px;
+}

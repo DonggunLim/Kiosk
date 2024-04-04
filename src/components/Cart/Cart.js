@@ -2,6 +2,10 @@ import { saveDataToStorage } from "../../utilities/storage";
 import Modal from "../Modal/Modal";
 import CartItem from "./CartItem";
 import styles from "./Cart.module.css";
+import MultiStepForm from "../MultiStepForm/MultiStepForm";
+import FirstStepComponent from "../MultiStepForm/FirstStepComponent";
+import SecondStepComponent from "../MultiStepForm/SecondStepComponent";
+import ThirdStepComponent from "../MultiStepForm/ThirdStepComponent";
 
 export default function Cart({ $target, router }) {
   this.state = {
@@ -24,7 +28,18 @@ export default function Cart({ $target, router }) {
   const handleSubmit = () => {
     if (this.state.orderList.length) {
       saveDataToStorage(this.state.orderList);
-      modal.open();
+      const modal = new Modal({
+        router,
+        path: "/",
+      });
+      modal.open(() => {
+        new MultiStepForm({
+          $target: modal.$ModalInner,
+          steps: [FirstStepComponent, SecondStepComponent, ThirdStepComponent],
+          data: this.state.orderList,
+          router,
+        });
+      });
     }
   };
 
@@ -81,10 +96,4 @@ export default function Cart({ $target, router }) {
   };
 
   this.setEvent();
-
-  const modal = new Modal({
-    innerText: "주문이 완료되었습니다.",
-    router,
-    path: "/",
-  });
 }

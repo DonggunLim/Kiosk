@@ -1,0 +1,64 @@
+.firstStep_component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.product_container {
+  display: flex;
+  gap: 8px;
+  padding: 16px 32px;
+}
+
+.orderList_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  flex-grow: 1;
+}
+
+.orderList_item {
+  text-align: center;
+}
+
+.product_img {
+  width: 200px;
+  height: 200px;
+}
+
+.totalPrice {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-gray-100);
+  background-color: var(--color-main2);
+  padding: 16px 32px;
+  margin: 8px 0;
+}
+
+.btn_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.next_btn {
+  background-color: var(--color-main1);
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+  padding: 8px 16px;
+  margin: 8px 0;
+  border-radius: 16px;
+}
+
+.prev_btn {
+  background-color: var(--color-main2);
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+  padding: 8px 16px;
+  margin: 8px 0;
+  border-radius: 16px;
+}
