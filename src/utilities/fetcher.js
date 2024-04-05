@@ -1,5 +1,4 @@
-export const getProducts = () =>
-  fetcher(`${process.env.END_POINT}/public/data/product.json`);
+export const getProducts = () => fetcher(`/public/data/product.json`);
 
 const fetcher = (path) => {
   return new Promise((resolve, reject) => {
