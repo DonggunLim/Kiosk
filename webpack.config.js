@@ -2,10 +2,10 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 const CopyPlugin = require("copy-webpack-plugin");
-
+const devtool = process.env.NODE_ENV === "development" ? "source-map" : false;
 module.exports = {
   mode: "development",
-  devtool: "source-map",
+  devtool,
   entry: {
     bundle: path.resolve(__dirname, "src/index.js"),
   },
