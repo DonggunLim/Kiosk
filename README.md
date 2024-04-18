@@ -9,35 +9,53 @@ yarn/npm install
 yarn/npm dev
 ```
 
-#### Screen
+#### Demo
 
-<img src="https://github.com/DonggunLim/Kiosk/assets/162268792/8e3b8982-e239-4a8e-9c41-04b9c288bfc1" width="350px">
+<img src="https://github.com/DonggunLim/Kiosk/assets/162268792/920b997d-7d67-4296-9f3e-3c93636eb89e" width="350px">
 
-#### 회고
+#### source tree
 
-<details>
-<summary>디버깅 툴 sourceMap 이용해보기 </summary>
-<div markdown="1">
-
-안녕
-
-</div>
-</details>
-
-<details>
-<summary>기본 fetch와 then으로 Promise 다뤄보기 </summary>
-<div markdown="1">
-
-안녕
-
-</div>
-</details>
-
-<details>
-<summary>SPA와 컴포넌트 구조로 개발</summary>
-<div markdown="1">
-
-안녕
-
-</div>
-</details>
+📦src
+┣ 📂components
+┃ ┣ 📂Cart
+┃ ┃ ┣ 📜Cart.js
+┃ ┃ ┣ 📜Cart.module.css
+┃ ┃ ┣ 📜CartItem.js
+┃ ┃ ┗ 📜CartItem.module.css
+┃ ┣ 📂FilterMenu
+┃ ┃ ┣ 📜FilterMenu.js
+┃ ┃ ┗ 📜FilterMenu.module.css
+┃ ┣ 📂Modal
+┃ ┃ ┣ 📜Modal.js
+┃ ┃ ┗ 📜Modal.module.css
+┃ ┣ 📂MultiStepForm
+┃ ┃ ┣ 📜FirstStepComponent.js
+┃ ┃ ┣ 📜FirstStepComponent.module.css
+┃ ┃ ┣ 📜MultiStepForm.js
+┃ ┃ ┣ 📜MultiStepForm.module.css
+┃ ┃ ┣ 📜SecondStepComponent.js
+┃ ┃ ┣ 📜SecondStepComponent.module.css
+┃ ┃ ┣ 📜ThirdStepComponent.js
+┃ ┃ ┗ 📜ThirdStepComponent.module.css
+┃ ┣ 📂OrderButton
+┃ ┃ ┣ 📜OrderButton.js
+┃ ┃ ┗ 📜OrderButton.module.css
+┃ ┗ 📂Product
+┃ ┃ ┣ 📜Product.js
+┃ ┃ ┣ 📜Product.module.css
+┃ ┃ ┣ 📜ProductList.js
+┃ ┃ ┗ 📜ProductList.module.css
+┣ 📂pages
+┃ ┣ 📜HomePage.js
+┃ ┣ 📜index.js
+┃ ┗ 📜OrderPage.js
+┣ 📂styles
+┃ ┣ 📜global.css
+┃ ┗ 📜reset.css
+┣ 📂utilities
+┃ ┣ 📜fetcher.js
+┃ ┣ 📜router.js
+┃ ┗ 📜storage.js
+┣ 📜App.js
+┣ 📜index.js
+┗ 📜template.html
