@@ -25,6 +25,31 @@ export default function Cart({ $target, router }) {
 
   $target.appendChild(this.$element);
 
+  this.setState = (orders) => {
+    this.state.orderList = [...orders];
+    this.render();
+  };
+
+  this.render = () => {
+    const $target = document.querySelector(`.${styles.order_list}`);
+    $target.innerHTML = ``;
+
+    this.state.orderList.map(
+      (order) =>
+        new CartItem({
+          $target,
+          order,
+        })
+    );
+
+    const totalPrice = this.state.orderList.reduce((acc, order) => {
+      return acc + order.price * order.count;
+    }, 0);
+    this.$element.querySelector(
+      `.${styles.totalPrice}`
+    ).innerText = `${totalPrice}원`;
+  };
+
   const handleSubmit = () => {
     if (this.state.orderList.length) {
       saveDataToStorage(this.state.orderList);
@@ -43,53 +68,36 @@ export default function Cart({ $target, router }) {
     }
   };
 
-  this.setState = (orders) => {
-    this.state.orderList = [...orders];
-    this.render();
-  };
+  const handleCartItemEvent = (e) => {
+    const $target = e.target.closest("button");
+    if (!$target) return;
 
-  this.render = () => {
-    const $target = document.querySelector(`.${styles.order_list}`);
-    $target.innerHTML = ``;
+    const $item = $target.closest(`.order_item`);
+    const orderName = $item.querySelector("p").textContent;
+    const order = this.state.orderList.find((o) => o.name === orderName);
 
-    this.state.orderList.map(
-      (order) =>
-        new CartItem({
-          $target,
-          order,
-          handleClickArrow: (order) => {
-            const newOrders = [...this.state.orderList];
-
-            const orderIndex = newOrders.findIndex(
-              (o) => o.name === order.name
-            );
-
-            if (orderIndex !== -1) {
-              newOrders[orderIndex] = order;
-            } else {
-              newOrders.push(order);
-            }
-
-            this.setState(newOrders);
-          },
-          handleDelete: (order) => {
-            const newOrders = this.state.orderList.filter(
-              (o) => o.name !== order.name
-            );
-            this.setState(newOrders);
-          },
-        })
-    );
-
-    const totalPrice = this.state.orderList.reduce((acc, order) => {
-      return acc + order.price * order.count;
-    }, 0);
-    this.$element.querySelector(
-      `.${styles.totalPrice}`
-    ).innerText = `${totalPrice}원`;
+    if ($target.classList.contains("right")) {
+      this.setState([
+        ...this.state.orderList.filter((o) => o.name !== orderName),
+        { ...order, count: order.count + 1 },
+      ]);
+    } else if ($target.classList.contains("left")) {
+      if (order.count > 1) {
+        this.setState([
+          ...this.state.orderList.filter((o) => o.name !== orderName),
+          { ...order, count: order.count - 1 },
+        ]);
+      }
+    } else if ($target.classList.contains(`delete`)) {
+      this.setState(this.state.orderList.filter((o) => o.name !== orderName));
+    }
   };
 
   this.setEvent = () => {
+    this.$element
+      .querySelector(`.${styles.order_list}`)
+      .addEventListener("click", handleCartItemEvent);
+
     this.$element
       .querySelector(`.${styles.order_btn}`)
       .addEventListener("click", handleSubmit);
