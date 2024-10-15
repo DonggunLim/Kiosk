@@ -27,6 +27,7 @@ export default function Cart({ $target, router }) {
 
   this.setState = (orders) => {
     this.state.orderList = [...orders];
+    console.log("state", this.state);
     this.render();
   };
 
@@ -77,16 +78,22 @@ export default function Cart({ $target, router }) {
     const order = this.state.orderList.find((o) => o.name === orderName);
 
     if ($target.classList.contains("right")) {
-      this.setState([
-        ...this.state.orderList.filter((o) => o.name !== orderName),
-        { ...order, count: order.count + 1 },
-      ]);
+      this.setState(
+        this.state.orderList.map((orderItem) => {
+          if (orderItem.name === orderName) {
+            return { ...orderItem, count: orderItem.count + 1 };
+          } else return orderItem;
+        })
+      );
     } else if ($target.classList.contains("left")) {
       if (order.count > 1) {
-        this.setState([
-          ...this.state.orderList.filter((o) => o.name !== orderName),
-          { ...order, count: order.count - 1 },
-        ]);
+        this.setState(
+          this.state.orderList.map((orderItem) => {
+            if (orderItem.name === orderName) {
+              return { ...orderItem, count: orderItem.count - 1 };
+            } else return orderItem;
+          })
+        );
       }
     } else if ($target.classList.contains(`delete`)) {
       this.setState(this.state.orderList.filter((o) => o.name !== orderName));
