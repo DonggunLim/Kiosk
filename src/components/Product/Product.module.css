@@ -1,5 +1,6 @@
 .product_item {
   flex: 0 1 25%;
+  height: fit-content;
 }
 
 .product_card {
